@@ -1,8 +1,4 @@
 /*
-
-*/
-
-/*
     COLUMN 1 (OPPONENT'S MOVE)
     A: rock
     B: paper
@@ -29,7 +25,7 @@
     6: win
 */
 
-use std::{collections::HashMap, str::Lines, ptr::null};
+use std::{collections::HashMap, str::Lines};
 
 static INPUT: &'static str = include_str!("input.txt");
 
