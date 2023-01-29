@@ -1,3 +1,8 @@
+
+mod advent_of_code;
+
+use crate::advent_of_code::{calorie_counting};
+
 fn main() {
-    println!("Hello, world!");
+    calorie_counting::main();
 }
