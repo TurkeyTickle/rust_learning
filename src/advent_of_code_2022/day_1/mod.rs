@@ -1,15 +1,15 @@
 use std::str::Lines;
 
-static TEXT: &'static str = include_str!("calories.txt");
+static INPUT: &'static str = include_str!("input.txt");
 
-pub fn main() {
-    let mut lines: Lines = TEXT.lines();
+pub fn get_solution() -> u32 {
+    let mut lines: Lines = INPUT.lines();
 
     let elf_splits = split_elves(&mut lines);
     let elf_sums = sum_cals(elf_splits);
 
     let result = elf_sums.iter().max();
-    println!("{}", result.unwrap());
+    *result.unwrap()
 }
 
 fn split_elves(lines: &mut Lines) -> Vec<Vec<u32>> {
