@@ -1,6 +1,6 @@
 use std::str::Lines;
 
-static INPUT: &'static str = include_str!("../input.txt");
+static INPUT: &'static str = include_str!("input.txt");
 
 pub fn get_elf_calorie_counts() -> Vec<u32> {
     let mut lines: Lines = INPUT.lines();
