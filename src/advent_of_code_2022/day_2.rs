@@ -2,11 +2,11 @@ use std::collections::HashMap;
 
 
 pub fn print_solution() {
-    let data = include_str!("data/day_2.txt");
-    let moves = parse(&data);
+    let raw_data = include_str!("data/day_2.txt");
+    let data = parse(&raw_data);
 
-    println!("Day 2 - Part 1: {}", part_1(&moves));
-    println!("Day 2 - Part 2: {}", part_2(&moves));
+    println!("Day 2 - Part 1: {}", part_1(&data));
+    println!("Day 2 - Part 2: {}", part_2(&data));
 }
 
 fn parse(data: &str) -> Vec<(char, char)> {
@@ -20,30 +20,7 @@ fn parse(data: &str) -> Vec<(char, char)> {
         .collect()
 }
 
-/*
-    PART 1 RULES
-
-    COLUMN 1 (OPPONENT)
-    A: rock
-    B: paper
-    C: scissors 
-
-    COLUMN 2 (SELF)
-    X: rock
-    Y: paper
-    Z: scissors
-
-    SCORE VALUES
-    1: rock
-    2: paper
-    3: scissors
-
-    SCORE OF EACH ROUND IS SCORE VALUE PLUS
-    0: loss
-    3: draw
-    6: win
-*/
-fn part_1(moves: &Vec<(char, char)>) -> u32 {
+fn part_1(data: &Vec<(char, char)>) -> u32 {
     let opponent_move_map = HashMap::from([
         ('A', 'R'),
         ('B', 'P'),
@@ -82,7 +59,7 @@ fn part_1(moves: &Vec<(char, char)>) -> u32 {
 
     let mut score = 0;
 
-    for m in moves {
+    for m in data {
         let opponent_move = opponent_move_map.get(&m.0).unwrap();
         let self_move = self_move_map.get(&m.1).unwrap();
 
@@ -96,35 +73,7 @@ fn part_1(moves: &Vec<(char, char)>) -> u32 {
     score
 }
 
-/*
-    PART 2 RULES
-
-    COLUMN 1 (OPPONENT'S MOVE)
-    A: rock
-    B: paper
-    C: scissors
-
-    COLUMN 2 (DESIRED OUTCOME)
-    X: lose
-    Y: draw
-    Z: win
-
-    SELF MOVE
-    X: rock
-    Y: paper
-    Z: scissors
-
-    SCORE VALUES
-    1: rock
-    2: paper
-    3: scissors
-
-    SCORE OF EACH ROUND IS SCORE VALUE PLUS
-    0: loss
-    3: draw
-    6: win
-*/
-fn part_2(moves: &Vec<(char, char)>) -> u32 {
+fn part_2(data: &Vec<(char, char)>) -> u32 {
     let opponent_move_map = HashMap::from([
         ('A', 'R'),
         ('B', 'P'),
@@ -163,7 +112,7 @@ fn part_2(moves: &Vec<(char, char)>) -> u32 {
 
     let mut score = 0;
 
-    for m in moves {
+    for m in data {
         let opponent_move = opponent_move_map.get(&m.0).unwrap();
         let desired_outcome = desired_outcome_map.get(&m.1).unwrap();
 

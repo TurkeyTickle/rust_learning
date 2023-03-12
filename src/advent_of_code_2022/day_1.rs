@@ -1,9 +1,9 @@
 pub fn print_solution() {
-    let data = include_str!("data/day_1.txt");
-    let mut cals = parse(&data);
+    let raw_data = include_str!("data/day_1.txt");
+    let mut data = parse(&raw_data);
 
-    println!("Day 1 - Part 1: {}", part_1(&cals));
-    println!("Day 1 - Part 2: {}", part_2(&mut cals));
+    println!("Day 1 - Part 1: {}", part_1(&data));
+    println!("Day 1 - Part 2: {}", part_2(&mut data));
 }
 
 fn parse(data: &str) -> Vec<u32> {
@@ -12,13 +12,13 @@ fn parse(data: &str) -> Vec<u32> {
         .collect()
 }
 
-fn part_1(cals: &Vec<u32>) -> u32 {
-    cals.iter().max().copied().unwrap()
+fn part_1(data: &Vec<u32>) -> u32 {
+    data.iter().max().copied().unwrap()
 }
 
-fn part_2(cals: &mut Vec<u32>) -> u32 {
-    cals.sort_by(|a, b| b.cmp(a));
-    cals.iter().take(3).sum()
+fn part_2(data: &mut Vec<u32>) -> u32 {
+    data.sort_by(|a, b| b.cmp(a));
+    data.iter().take(3).sum()
 }
 
 #[cfg(test)]
