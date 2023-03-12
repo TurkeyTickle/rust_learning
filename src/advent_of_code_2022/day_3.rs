@@ -4,8 +4,8 @@ pub fn print_solution() {
     let raw_data = include_str!("data/day_3.txt");
     let data = parse(&raw_data);
 
-    println!("Day 2 - Part 1: {}", part_1(&data));
-    println!("Day 2 - Part 2: {}", part_2(&data));
+    println!("Day 3 - Part 1: {}", part_1(&data));
+    println!("Day 3 - Part 2: {}", part_2(&data));
 }
 
 fn parse(data: &str) -> Vec<&str> {
