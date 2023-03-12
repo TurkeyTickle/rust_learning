@@ -30,7 +30,17 @@ fn part_1(data: &Vec<((u32, u32), (u32, u32))>) -> u32 {
 }
 
 fn part_2(data: &Vec<((u32, u32), (u32, u32))>) -> u32 {
-    0
+    let mut result = 0;
+
+    for set in data {
+        let a: Vec<u32> = (set.0.0..=set.0.1).collect();
+        let b: Vec<u32> = (set.1.0..=set.1.1).collect();
+        if a.iter().any(|x| b.contains(x)) {
+            result += 1;
+        }
+    }
+
+    result
 }
 
 #[cfg(test)]
@@ -61,6 +71,6 @@ mod tests {
     #[test]
     fn test_part_2() {
         let data = parse(TEST_DATA);
-        assert_eq!(part_2(&data), 70)
+        assert_eq!(part_2(&data), 4)
     }
 }
