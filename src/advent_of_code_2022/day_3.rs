@@ -37,7 +37,25 @@ fn part_1(data: &Vec<&str>) -> u32 {
 }
 
 fn part_2(data: &Vec<&str>) -> u32 {
-    0
+    let letters: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let mut priority_map: HashMap<char, u32> = HashMap::default();
+
+    let mut index = 1;
+    for letter in letters.chars() {
+        priority_map.insert(letter, index);
+        index += 1;
+    }
+
+    let mut result = 0;
+    for set in data.chunks(3) {
+        for letter in letters.chars() {
+            if set.iter().all(|line| line.contains(letter)) {
+                result += priority_map.get(&letter).unwrap();
+            }
+        }
+    }
+
+    result
 }
 
 
